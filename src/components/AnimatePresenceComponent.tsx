@@ -23,32 +23,92 @@ const Box = styled(motion.div)`
   position: absolute;
   top: 100px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
 `;
 
+// const boxVariants: Variants = {
+//   initial: {
+//     opacity: 0,
+//     scale: 0,
+//   },
+//   visible: {
+//     opacity: 1,
+//     scale: 1,
+//     rotateZ: 360,
+//   },
+//   leaving: {
+//     opacity: 0,
+//     y: 20,
+//   },
+// };
+
+// const boxVariants: Variants = {
+//   initial: {
+//     x: 500,
+//     opacity: 0,
+//     scale: 0,
+//   },
+//   visible: {
+//     x: 0,
+//     opacity: 1,
+//     scale: 1,
+//     transition: { duration: 1 },
+//   },
+//   leaving: {
+//     x: -500,
+//     opacity: 0,
+//     scale: 0,
+//     transition: { duration: 1 },
+//   },
+// };
+
 const boxVariants: Variants = {
-  initial: {
-    opacity: 0,
-    scale: 0,
+  entry: (back: boolean) => {
+    return {
+      x: back ? -500 : 500,
+      opacity: 0,
+      scale: 0,
+    };
   },
-  visible: {
+  center: {
+    x: 0,
     opacity: 1,
     scale: 1,
-    rotateZ: 360,
+    transition: { duration: 0.3 },
   },
-  leaving: {
-    opacity: 0,
-    y: 20,
+  exit: (back: boolean) => {
+    return {
+      x: back ? 500 : -500,
+      opacity: 0,
+      scale: 0,
+      transition: { duration: 0.3 },
+    };
   },
 };
 
 const AnimatePresenceComponent = () => {
-  const [showing, setShowing] = useState(false);
-  const toggleHandler = () => {
-    setShowing((prev) => !prev);
+  // const [showing, setShowing] = useState(false);
+  // const toggleHandler = () => {
+  //   setShowing((prev) => !prev);
+  // };
+
+  const [visible, setVisible] = useState(1);
+  const [back, setBack] = useState(false);
+  const nextPlease = () => {
+    setBack(false);
+    setVisible((prev) => (prev === 10 ? 10 : prev + 1));
   };
+  const prevPlease = () => {
+    setBack(true);
+    setVisible((prev) => (prev === 1 ? 1 : prev - 1));
+  };
+
   return (
     <Wrapper>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {showing ? (
           <Box
             variants={boxVariants}
@@ -58,7 +118,34 @@ const AnimatePresenceComponent = () => {
           />
         ) : null}
       </AnimatePresence>
-      <button onClick={toggleHandler}>Click</button>
+      <button onClick={toggleHandler}>Click</button> */}
+      {/* <AnimatePresence>
+        <Box
+          variants={boxVariants}
+          initial="initial"
+          animate="visible"
+          exit="leaving"
+          key={visible}
+        >
+          {visible}
+        </Box>
+      </AnimatePresence>
+      <button onClick={prevPlease}>prev</button>
+      <button onClick={nextPlease}>next</button> */}
+      <AnimatePresence mode="wait" custom={back}>
+        <Box
+          custom={back}
+          variants={boxVariants}
+          initial="entry"
+          animate="center"
+          exit="exit"
+          key={visible}
+        >
+          {visible}
+        </Box>
+      </AnimatePresence>
+      <button onClick={prevPlease}>prev</button>
+      <button onClick={nextPlease}>next</button>
     </Wrapper>
   );
 };
