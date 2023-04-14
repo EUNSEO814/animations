@@ -2,7 +2,8 @@
 // import styled from "styled-components";
 // import GesturesComponents from "./components/GesturesComponents";
 // import VariantsComponent from "./components/VariantsComponent";
-import MotionValueComponents from "./components/MotionValueComponents";
+// import MotionValueComponents from "./components/MotionValueComponents";
+import SVGAnimation from "./components/SVGAnimation";
 
 // const Wrapper = styled(motion.div)`
 //   height: 100vh;
@@ -14,7 +15,8 @@ import MotionValueComponents from "./components/MotionValueComponents";
 // `;
 
 function App() {
-  return <MotionValueComponents />;
+  return <SVGAnimation />;
+  // <MotionValueComponents />;
   // <Wrapper style={{ background: gradient }}>
   //   <VariantsComponent />
   //   <GesturesComponents />
