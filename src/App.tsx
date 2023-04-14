@@ -4,8 +4,9 @@
 // import VariantsComponent from "./components/VariantsComponent";
 // import MotionValueComponents from "./components/MotionValueComponents";
 // import SVGAnimation from "./components/SVGAnimation";
+// import AnimatePresenceComponent from "./components/AnimatePresenceComponent";
 
-import AnimatePresenceComponent from "./components/AnimatePresenceComponent";
+import LayoutAnimationComponent from "./components/LayoutAnimationComponent";
 
 // const Wrapper = styled(motion.div)`
 //   height: 100vh;
@@ -17,7 +18,8 @@ import AnimatePresenceComponent from "./components/AnimatePresenceComponent";
 // `;
 
 function App() {
-  return <AnimatePresenceComponent />;
+  return <LayoutAnimationComponent />;
+  // <AnimatePresenceComponent />;
   // <SVGAnimation />;
   // <MotionValueComponents />;
   // <Wrapper style={{ background: gradient }}>
