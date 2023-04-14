@@ -5,8 +5,9 @@
 // import MotionValueComponents from "./components/MotionValueComponents";
 // import SVGAnimation from "./components/SVGAnimation";
 // import AnimatePresenceComponent from "./components/AnimatePresenceComponent";
+// import LayoutAnimationComponent from "./components/LayoutAnimationComponent";
 
-import LayoutAnimationComponent from "./components/LayoutAnimationComponent";
+import LayoutsComponent from "./components/LayoutsComponent";
 
 // const Wrapper = styled(motion.div)`
 //   height: 100vh;
@@ -18,7 +19,8 @@ import LayoutAnimationComponent from "./components/LayoutAnimationComponent";
 // `;
 
 function App() {
-  return <LayoutAnimationComponent />;
+  return <LayoutsComponent />;
+  // <LayoutAnimationComponent />;
   // <AnimatePresenceComponent />;
   // <SVGAnimation />;
   // <MotionValueComponents />;
